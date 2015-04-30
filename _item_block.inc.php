@@ -28,7 +28,7 @@ $params = array_merge( array(
 	
 ?>
 
-<!--<div id="<?php $Item->anchor_id() ?>" class="<?php $Item->div_classes( $params ) ?>" lang="<?php $Item->lang() ?>">-->
+<!--<div id="<?php // $Item->anchor_id() ?>" class="<?php //$Item->div_classes( $params ) ?>" lang="<?php //fbPostContent$Item->lang() ?>">-->
 	<div class="col-lg-12">
 
 	<?php

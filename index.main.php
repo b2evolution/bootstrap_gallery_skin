@@ -47,25 +47,7 @@ siteskin_include( '_site_body_header.inc.php' );
 ?>
 
 <div class="container">
-		<div class="col-sm-12 col-md-push-8">
-			<div class="PageTop">
-	<?php
-		// Display container and contents:
-		skin_container( NT_('Page Top'), array(
-				// The following params will be used as defaults for widgets included in this container:
-				'block_start' => '<div class="widget $wi_class$">',
-				'block_end' => '</div>',
-				'block_display_title' => false,
-				'list_start' => '<ul>',
-				'list_end' => '</ul>',
-				'item_start' => '<li>',
-				'item_end' => '</li>',
-			) );
-	?>
-			</div><!-- ../PageTop -->
-		</div><!-- ../coll-sm-12 -->
-		<div class="col-lg-12">
-			<div class="pageHeader">
+			<div class="pageHeader col-lg-8 col-md-12">
 	<?php
 		// ------------------------- "Header" CONTAINER EMBEDDED HERE --------------------------
 		// Display container and contents:
@@ -89,7 +71,23 @@ siteskin_include( '_site_body_header.inc.php' );
 		) );
 	?>
 			</div><!-- ../PageHeader -->
-		</div><!-- ../coll-lg-12 -->
+			
+			
+		<div class="PageTop col-lg-4 col-md-12">
+	<?php
+		// Display container and contents:
+		skin_container( NT_('Page Top'), array(
+				// The following params will be used as defaults for widgets included in this container:
+				'block_start' => '<div class="widget $wi_class$">',
+				'block_end' => '</div>',
+				'block_display_title' => false,
+				'list_start' => '<ul>',
+				'list_end' => '</ul>',
+				'item_start' => '<li>',
+				'item_end' => '</li>',
+			) );
+	?>
+		</div><!-- ../PageTop -->
 
 	<div class="row">
 		<div class="col-md-12">
@@ -221,14 +219,12 @@ siteskin_include( '_site_body_header.inc.php' );
 	if( $Item = & get_featured_Item() )
 	{	// We have a featured/intro post to display:
 		// ---------------------- ITEM BLOCK INCLUDED HERE ------------------------
-		echo '<div class="col-md-4 float-right">';
 		skin_include( '_item_block.inc.php', array(
-				'feature_block' => true,
+				'feature_block'=> true,
 				'content_mode' => 'full', // We want regular "full" content, even in category browsing: i-e no excerpt or thumbnail
 				'intro_mode'   => 'normal',	// Intro posts will be displayed in normal mode
 				'item_class'   => 'featured_post',
 			) );
-		echo '</div>';
 		// ----------------------------END ITEM BLOCK  ----------------------------
 	}
 	?>

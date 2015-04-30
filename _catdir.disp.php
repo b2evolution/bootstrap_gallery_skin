@@ -52,7 +52,7 @@ if( ! empty( $chapters ) )
 			$no_content_to_display = false;
 ?>
 <div class="posts_list">
-	<div class="category_title clear"><h3><a href="<?php echo $Chapter->get_permanent_url(); ?>"><?php echo $Chapter->get( 'name' ); ?></a></h3></div>
+	<div class="category_title clear"><h2><a href="<?php echo $Chapter->get_permanent_url(); ?>"><?php echo $Chapter->get( 'name' ); ?></a></h2></div>
 <?php
 			while( $Item = & $ItemList->get_item() )
 			{ // For each blog post, do everything below up to the closing curly brace "}"
