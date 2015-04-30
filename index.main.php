@@ -46,9 +46,7 @@ siteskin_include( '_site_body_header.inc.php' );
 // ------------------------------- END OF SITE HEADER --------------------------------
 ?>
 
-<div class="container">
-		<div class="col-sm-12 col-md-push-8">
-			<div class="PageTop">
+<div class="PageTop">
 	<?php
 		// Display container and contents:
 		skin_container( NT_('Page Top'), array(
@@ -62,22 +60,11 @@ siteskin_include( '_site_body_header.inc.php' );
 				'item_end' => '</li>',
 			) );
 	?>
-			</div><!-- ../PageTop -->
-		</div><!-- ../coll-sm-12 -->
-		<div class="col-lg-12">
-			<div class="pageHeader">
-	<?php
-		// ------------------------- "Header" CONTAINER EMBEDDED HERE --------------------------
-		// Display container and contents:
-		skin_container( NT_('Header'), array(
-				// The following params will be used as defaults for widgets included in this container:
-				'block_start'       => '<div class="widget $wi_class$">',
-				'block_end'         => '</div>',
-				'block_title_start' => '<h1>',
-				'block_title_end'   => '</h1>',
-			) );
-		// ----------------------------- END OF "Header" CONTAINER -----------------------------
-	?>
+</div>
+
+<div class="pageHeader">
+
+	<h1 id="pageTitle"><a href="<?php $Blog->disp( 'url', 'raw' ) ?>"><?php $Blog->disp( 'name', 'htmlbody' ) ?></a></h1>
 
 	<?php
 		skin_widget( array(
@@ -88,34 +75,31 @@ siteskin_include( '_site_body_header.inc.php' );
 			'after'  => ')',
 		) );
 	?>
-			</div><!-- ../PageHeader -->
-		</div><!-- ../coll-lg-12 -->
 
-	<div class="row">
-		<div class="col-md-12">
-			<ul class="nav nav-tabs">
+	<div class="top_menu floatright">
 		<?php
 			// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
 			// Display container and contents:
 			skin_container( NT_('Menu'), array(
 					// The following params will be used as defaults for widgets included in this container:
-				'block_start'         => '',
-				'block_end'           => '',
-				'block_display_title' => false,
-				'list_start'          => '',
-				'list_end'            => '',
-				'item_start'          => '<li>',
-				'item_end'            => '</li>',
-				'item_selected_start' => '<li class="active">',
-				'item_selected_end'   => '</li>',
-				'item_title_before'   => '',
-				'item_title_after'    => '',
+					'block_start'         => '',
+					'block_end'           => '',
+					'block_display_title' => false,
+					'list_start'          => '',
+					'list_end'            => '',
+					'item_start'          => ' <span class="menu_link">',
+					'item_end'            => '</span> ',
+					'item_selected_start' => ' <span class="menu_link">',
+					'item_selected_end'   => '</span>',
+					'item_title_before'   => '',
+					'item_title_after'    => '',
 				) );
 			// ----------------------------- END OF "Menu" CONTAINER -----------------------------
 		?>
-			</ul><!-- ../nav -->
-		</div><!-- ../col-md-12 -->
-	</div><!-- ../row -->
+	</div>
+
+	<div class="clear"></div>
+</div>
 
 <?php
 if( $disp == 'single' )
@@ -129,16 +113,14 @@ if( $disp == 'single' )
 
 	<span class="nav_album_title">
 	<?php
+		$single_Item->title( array(
+				'link_type' => 'permalink'
+			) );
 		$single_Item->edit_link( array( // Link to backoffice for editing
-				'before'    => '<h3>',
+				'before'    => ' ',
 				'after'     => '',
 				'text'      => get_icon( 'edit' ),
 				'title'     => T_('Edit title/description...'),
-			) );
-		$single_Item->title( array(
-				'link_type' => 'permalink',
-				'before'    => '',
-				'after'     => '</h3>',
 			) );
 		if( $Skin->enabled_status_banner( $Item->status ) )
 		{ // Status banner
@@ -155,34 +137,32 @@ if( $disp == 'single' )
 	// ------------------- PREV/NEXT POST LINKS (SINGLE POST MODE) -------------------
 	item_prevnext_links( array(
 			'template' => '$prev$$next$',
-			'block_start' => '<ul class="pager">',
-			'next_class' => 'next',
-			'next_start'  => '<li class="next">',
-			'next_text' => 'Next',
-			'next_no_item' => '',
-			'next_end'    => '</li>',
-			'prev_class' => 'previous',
-			'prev_start'  => '<li class="previous">',
-			'prev_text' => 'Previous',
-			'prev_no_item' => '',
+			'block_start' => '<div class="roundbutton_group nav_album_arrows">',
+			'next_class' => 'roundbutton rbtn_black',
+			'next_start'  => '',
+			'next_text' => get_icon( 'arrow_right_white' ),
+			'next_no_item' => '<span class="roundbutton rbtn_black">'.get_icon( 'arrow_right_grey' ).'</span>',
+			'next_end'    => '',
+			'prev_class' => 'roundbutton rbtn_black',
+			'prev_start'  => '',
+			'prev_text' => get_icon( 'arrow_left_white' ),
+			'prev_no_item' => '<span class="roundbutton rbtn_black">'.get_icon( 'arrow_left_grey' ).'</span>',
 			'prev_end'    => '',
-			'block_end'   => '</ul>',
+			'block_end'   => '</div>',
 		) );
 	// ------------------------- END OF PREV/NEXT POST LINKS -------------------------
 ?>
 
-	<div class="nav_album_number">
-	<?php printf( T_('%s photos'), $single_Item->get_number_of_images() ); ?>
-	</div>
+<div class="nav_album_number">
+<?php printf( T_('%s photos'), $single_Item->get_number_of_images() ); ?>
+</div>
 
-	<div class="clear"></div>
-</div><!-- ../nav_album -->
+<div class="clear"></div></div>
 <?php
 	}
 } // ------------------- END OF NAVIGATION BAR FOR ALBUM(POST) ------------------- ?>
 
-	<div class="row">
-		<div class="bPosts<?php echo in_array( $disp, array( 'catdir', 'posts', 'single', 'page', 'mediaidx' ) ) ? ' col-lg-12' : '' ?>">
+<div class="bPosts<?php echo in_array( $disp, array( 'catdir', 'posts', 'single', 'page', 'mediaidx' ) ) ? ' full_width' : '' ?>">
 
 <!-- =================================== START OF MAIN AREA =================================== -->
 
@@ -195,7 +175,6 @@ if( $disp == 'single' )
 	// --------------------------------- END OF MESSAGES ---------------------------------
 	?>
 
-	<div class="col-md-8">
 	<?php
 	if( empty( $template ) && $template != 'access_requires_login.main.php' )
 	{ // Don't display page title on access restricted pages
@@ -215,25 +194,21 @@ if( $disp == 'single' )
 		// ------------------------------ END OF REQUEST TITLE -----------------------------
 	}
 	?>
-	</div><!-- ../col-md-8 -->
-<div class="clear"></div>
+
 	<?php
 	// Go Grab the featured post:
 	if( $Item = & get_featured_Item() )
 	{	// We have a featured/intro post to display:
 		// ---------------------- ITEM BLOCK INCLUDED HERE ------------------------
-		echo '<div class="col-md-4 float-right">';
 		skin_include( '_item_block.inc.php', array(
 				'feature_block' => true,
 				'content_mode' => 'full', // We want regular "full" content, even in category browsing: i-e no excerpt or thumbnail
 				'intro_mode'   => 'normal',	// Intro posts will be displayed in normal mode
 				'item_class'   => 'featured_post',
 			) );
-		echo '</div>';
 		// ----------------------------END ITEM BLOCK  ----------------------------
 	}
 	?>
-	</div><!-- ../col-md-4 -->
 
 	<?php
 	if( $disp == 'single' || $disp == 'page' )
@@ -280,8 +255,7 @@ if( $disp == 'single' )
 		// copying the matching php file into your skin directory.
 		// ------------------------- END OF MAIN CONTENT TEMPLATE ---------------------------
 	?>
-		</div><!-- ../bPosts col-lg-12 -->
-	</div><!-- ../row -->
+</div>
 
 <?php
 if( $disp != 'catdir' )
@@ -297,7 +271,6 @@ if( $disp != 'catdir' )
 }
 ?>
 
-</div><!-- ../container MAIN -->
 <?php
 // ------------------------- BODY FOOTER INCLUDED HERE --------------------------
 skin_include( '_body_footer.inc.php' );
