@@ -25,10 +25,11 @@ $params = array_merge( array(
 		'image_size'             => '', // Do not display images in content block - Image is handled separately
 		'url_link_text_template' => '', // link will be displayed (except player if podcast)
 	), $params );
-
+	
 ?>
 
-<div id="<?php $Item->anchor_id() ?>" class="<?php $Item->div_classes( $params ) ?>" lang="<?php $Item->lang() ?>">
+<!--<div id="<?php $Item->anchor_id() ?>" class="<?php $Item->div_classes( $params ) ?>" lang="<?php $Item->lang() ?>">-->
+	<div class="col-lg-12">
 
 	<?php
 		$Item->locale_temp_switch(); // Temporarily switch to post locale (useful for multilingual blogs)
@@ -36,21 +37,21 @@ $params = array_merge( array(
 
 	<?php
 		// Display images that are linked to this post:
-		echo '<div class="post_images">';
+		echo '<div class="post_images col-lg-8">';
 		$Item->images( array(
 				'before'              => '',
-				'before_image'        => '<div class="image_block"><div>',
+				'before_image'        => '<div class="single-image">',
 				'before_image_legend' => '<div class="image_legend">',
 				'after_image_legend'  => '</div>',
-				'after_image'         => '</div></div>',
-				'after'               => '',
+				'after_image'         => '</div>',
+				'after'               => '<div class="clear"></div>',
 				'image_size'          => $Skin->get_setting( 'single_thumb_size' ),
 				'image_align'         => 'middle',
 			) );
 		echo '</div>';
 	?>
 
-<div class="bPostContent">
+<div class="bPostContent col-lg-4">
 
 	<div class="bDetails">
 
