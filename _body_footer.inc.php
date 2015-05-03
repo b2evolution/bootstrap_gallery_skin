@@ -14,9 +14,6 @@ if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.'
 
 ?>
 <!-- =================================== START OF FOOTER =================================== -->
-<div class="container">
-		<div class="col-lg-12 col-md-12 col-sm-12">
-			<div class="baseline-wrapper">
 	<p class="baseline">	
 		<?php
 			// Display footer text (text can be edited in Blog Settings):
@@ -40,10 +37,11 @@ if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.'
 					'text'        => T_('Help'),
 				) );
 		?>
+		
+		<a href="http://b2evolution.net/" title="b2evolution home" target="_blank">b2evolution</a>	
 	</p>
 
 	<p class="baseline">
-	<a href="http://b2evolution.net/" title="b2evolution home" target="_blank">b2evolution</a>	
 		<?php
 			// Display additional credits:
 			// If you can add your own credits without removing the defaults, you'll be very cool :))
@@ -57,6 +55,3 @@ if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.'
 				) ) )
 		?>
 	</p>
-			</div>
-		</div>
-</div>
