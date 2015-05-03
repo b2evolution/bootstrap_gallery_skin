@@ -2,7 +2,7 @@
   margin-bottom: 20px;
 }
 .PageTop {
-  margin-top: 20px;
+  margin: 20px 0px;
 }
 .PageTop .widget--social-media-links {
   text-align: right;
@@ -377,7 +377,12 @@ body {
   overflow-x: hidden !important;
 }
 .posts_list {
+  text-align: center;
   margin-top: 0px;
+}
+.posts_list .bPost {
+  display: inline-block;
+  vertical-align: middle;
 }
 .posts_list .bPost img,
 .posts_list .posts_list .bPost b {
@@ -404,8 +409,8 @@ body {
   box-shadow: 0 0 10px -3px #000000;
   margin-bottom: 5px;
 }
-.posts_list.no-border {
-  border: none;
+.no-border {
+  border: none !important;
 }
 .posts_list,
 .bPosts h2 {
@@ -440,6 +445,7 @@ body {
 }
 .baseline-wrapper {
   padding-top: 10px;
+  border-top: 1px solid #ddd;
 }
 .baseline-wrapper .baseline {
   text-align: center;
@@ -448,6 +454,20 @@ div.image_index div {
   margin: 25px;
   background: none;
   border: none;
+}
+div.image_index div img {
+  transition: all 0.15s ease-in-out;
+  -webkit-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -ms-transition: all 0.15s ease-in-out;
+}
+div.image_index div:hover img {
+  transform: scale(1.06);
+  -ms-transform: scale(1.06);
+  /* IE 9 */
+  -webkit-transform: scale(1.06);
+  /* Safari and Chrome */
 }
 div.image_index div:hover {
   background: none;
@@ -474,7 +494,6 @@ div.image_index div:hover {
 .nav_album .nav_album_number,
 .nav_album .pager {
   float: right;
-  display: inline-block;
   margin: 5px 5px;
 }
 .nav_album .pager .previous {
@@ -576,8 +595,8 @@ fieldset .info {
     display: inline-block;
     margin-top: 10px;
     margin-right: 5px;
-    float: right;
-    position: relative;
+    float: right !important;
+    position: relative !important;
   }
   .bDetails,
   .col-lg-12 {
@@ -588,5 +607,8 @@ fieldset .info {
 @media screen and (max-width: 500px) {
   .float-right {
     padding: 0px !important;
+  }
+  .image_index div {
+    margin: 5px !important;
   }
 }
