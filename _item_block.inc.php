@@ -29,7 +29,7 @@ $params = array_merge( array(
 ?>
 
 <!--<div id="<?php // $Item->anchor_id() ?>" class="<?php //$Item->div_classes( $params ) ?>" lang="<?php //fbPostContent$Item->lang() ?>">-->
-	<div class="col-lg-12">
+	<div class="col-lg-12 single_post">
 
 	<?php
 		$Item->locale_temp_switch(); // Temporarily switch to post locale (useful for multilingual blogs)
@@ -37,7 +37,7 @@ $params = array_merge( array(
 
 	<?php
 		// Display images that are linked to this post:
-		echo '<div class="post_images col-lg-8">';
+		echo '<div class="post_images col-lg-8 col-md-6 col-sm-6">';
 		$Item->images( array(
 				'before'              => '',
 				'before_image'        => '<div class="single-image">',
@@ -51,7 +51,7 @@ $params = array_merge( array(
 		echo '</div>';
 	?>
 
-<div class="bPostContent col-lg-4">
+<div class="bPostContent col-lg-4 col-md-6 col-sm-6">
 
 	<div class="bDetails">
 

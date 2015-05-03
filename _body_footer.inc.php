@@ -16,6 +16,7 @@ if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.'
 
 <!-- =================================== START OF FOOTER =================================== -->
 
+<div class="baseline-wrapper">
 	<p class="baseline">	
 		<?php
 			// Display footer text (text can be edited in Blog Settings):
@@ -60,3 +61,4 @@ if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.'
 				) ) )
 		?>
 	</p>
+</div>

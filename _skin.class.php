@@ -208,6 +208,15 @@ class bootstrap_gallery_Skin extends Skin
 		// Make sure standard CSS is called ahead of custom CSS generated below:
 		require_css( 'style.css', true );
 		
+		// Colorbox (a lightweight Lightbox alternative) allows to zoom on images and do slideshows with groups of images:
+		if( $this->get_setting( 'colorbox' ) )
+		{
+			require_js_helper( 'colorbox', 'blog' );
+		}
+
+		// JS to init tooltip (E.g. on comment form for allowed file extensions)
+		add_js_headline( 'jQuery( function () { jQuery( \'[data-toggle="tooltip"]\' ).tooltip() } )' );
+		
 		// Set bootstrap classes for messages
 		$Messages->set_params( array(
 				'class_success'  => 'alert alert-dismissible alert-success fade in',
