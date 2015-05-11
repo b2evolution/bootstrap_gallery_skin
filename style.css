@@ -88,12 +88,11 @@ ul.profile_tabs {
   padding: 10px;
   margin-left: 10px;
 }
-form.bComment {
-  border-color: #DDD;
-  padding: 1em;
-}
-form.bComment .controls textarea.form-control {
+form.evo_form .controls textarea.form-control {
   width: 100%;
+}
+form.evo_form textarea {
+  resize: vertical;
 }
 input.search_field {
   margin-bottom: 0;
@@ -442,12 +441,12 @@ body {
 .float-right {
   float: right;
 }
-div.image_index div {
+div.evo_image_index div {
   margin: 25px;
   background: none;
   border: none;
 }
-div.image_index div img {
+div.evo_image_index div img {
   transition: all 0.15s ease-in-out;
   -webkit-transition: all 0.15s ease-in-out;
   -moz-transition: all 0.15s ease-in-out;
@@ -457,14 +456,14 @@ div.image_index div img {
   -moz-box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.42);
   box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.42);
 }
-div.image_index div:hover img {
+div.evo_image_index div:hover img {
   transform: scale(1.06);
   -ms-transform: scale(1.06);
   /* IE 9 */
   -webkit-transform: scale(1.06);
   /* Safari and Chrome */
 }
-div.image_index div:hover {
+div.evo_image_index div:hover {
   background: none;
 }
 .alert-dismissible .close {
@@ -483,13 +482,15 @@ div.image_index div:hover {
 }
 .nav_album .nav_album_title {
   display: inline-block;
-  margin-top: 10px;
-  position: absolute;
+  margin-top: 6px;
+}
+.nav_album .nav_album_title a {
+  font-size: 20px;
 }
 .nav_album .nav_album_number,
 .nav_album .pager {
   float: right;
-  margin: 5px 5px;
+  margin: 5px 3px;
 }
 .nav_album .pager .previous {
   margin-right: 3px;
@@ -497,19 +498,16 @@ div.image_index div:hover {
 .nav_album .nav_album_number {
   margin-top: 10px;
 }
-.bComment {
-  margin: 7px 0px !important;
-}
-form.bComment fieldset div.label {
+form.evo_form fieldset div.label {
   float: none !important;
   padding-left: 0px;
   text-align: center;
 }
-form.bComment fieldset div.label .btn {
+form.evo_form fieldset div.label .btn {
   margin: 5px;
   display: inline-block;
 }
-form.bComment fieldset div.label,
+form.evo_form fieldset div.label,
 fieldset .input,
 fieldset .info {
   float: none;
@@ -522,12 +520,19 @@ fieldset .info {
 .checkbox {
   display: inline-block;
 }
-.bComment {
-  margin: 0px;
+.item_comments h4 {
+  font-size: 24px;
 }
-.bComment .bCommentAvatar {
+.evo_comment {
+  margin: 0 0 20px 0;
+  padding: 8px 15px 15px 15px;
+}
+.evo_comment .bCommentAvatar {
   border-radius: 50%;
   border: none;
+}
+.input #uploadfile_A1 {
+  width: 90%;
 }
 .post_title {
   display: table;
@@ -600,7 +605,7 @@ fieldset .info {
   .float-right {
     padding: 0px !important;
   }
-  .image_index div {
+  .evo_image_index div {
     margin: 5px !important;
   }
 }
