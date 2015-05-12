@@ -498,6 +498,15 @@ div.evo_image_index div:hover {
 .nav_album .nav_album_number {
   margin-top: 10px;
 }
+form.evo_form fieldset .info {
+  margin: 10px 0px 17px 0px;
+}
+form.evo_form fieldset {
+  margin: 5px 0px !important;
+}
+form.evo_form fieldset {
+  margin: 0px;
+}
 form.evo_form fieldset div.label {
   float: none !important;
   padding-left: 0px;
@@ -520,12 +529,9 @@ fieldset .info {
 .checkbox {
   display: inline-block;
 }
-.item_comments h4 {
-  font-size: 24px;
-}
 .evo_comment {
   margin: 0 0 20px 0;
-  padding: 8px 15px 15px 15px;
+  padding: 0px;
 }
 .evo_comment .bCommentAvatar {
   border-radius: 50%;
@@ -608,4 +614,20 @@ fieldset .info {
   .evo_image_index div {
     margin: 5px !important;
   }
+}
+.bt-content {
+  font-size: 14px;
+}
+.bt-content .bubbletip_user ul li {
+  margin-top: 15px;
+}
+#ffield_uploadfile_A1 .input {
+  text-align: left;
+}
+#ffield_uploadfile_A1 .input input,
+#ffield_uploadfile_A1 .input span {
+  display: inline-block;
+}
+.label {
+  font-size: 14px !important;
 }
