@@ -199,23 +199,20 @@ siteskin_include( '_site_body_header.inc.php' );
 	?>
 
 	<?php
-	if( empty( $template ) && $template != 'access_requires_login.main.php' )
-	{ // Don't display page title on access restricted pages
-		// ------------------------- TITLE FOR THE CURRENT REQUEST -------------------------
-		request_title( array(
-				'title_before'=> '<h2>',
-				'title_after' => '</h2>',
-				'title_none'  => '',
-				'glue'        => ' - ',
-				'title_single_disp' => false,
-				'format'      => 'htmlbody',
-				'arcdir_text' => T_('Index'),
-				'catdir_text' => '',
-				'category_text' => T_('Gallery').': ',
-				'categories_text' => T_('Galleries').': ',
-			) );
-		// ------------------------------ END OF REQUEST TITLE -----------------------------
-	}
+	// ------------------------- TITLE FOR THE CURRENT REQUEST -------------------------
+	request_title( array(
+			'title_before'=> '<h2>',
+			'title_after' => '</h2>',
+			'title_none'  => '',
+			'glue'        => ' - ',
+			'title_single_disp' => false,
+			'format'      => 'htmlbody',
+			'arcdir_text' => T_('Index'),
+			'catdir_text' => '',
+			'category_text' => T_('Gallery').': ',
+			'categories_text' => T_('Galleries').': ',
+		) );
+	// ------------------------------ END OF REQUEST TITLE -----------------------------
 	?>
 	<div class="clear"></div>
 	<?php
