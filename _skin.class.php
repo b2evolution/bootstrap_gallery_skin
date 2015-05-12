@@ -22,7 +22,6 @@ class bootstrap_gallery_Skin extends Skin
 	 * Do we want to use style.min.css instead of style.css ?
 	 */
 	var $use_min_css = 'true';  // true|false|'check' Set this to true for better optimization
-	// Note: we leave this on "check" so it's easier for beginners to kjust delete the .min.css file
 
 	/**
 	 * Get default name for the skin.
@@ -179,14 +178,14 @@ class bootstrap_gallery_Skin extends Skin
 				'posts_thumb_size' => array(
 					'label' => T_('Thumbnail size in post list'),
 					'note' => '',
-					'defaultvalue' => 'fit-192x192',
+					'defaultvalue' => 'crop-192x192',
 					'options' => get_available_thumb_sizes(),
 					'type' => 'select',
 				),
 				'single_thumb_size' => array(
 					'label' => T_('Thumbnail size in single page'),
 					'note' => '',
-					'defaultvalue' => 'fit-192x192',
+					'defaultvalue' => 'fit-256x256',
 					'options' => get_available_thumb_sizes(),
 					'type' => 'select',
 				),
