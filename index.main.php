@@ -11,20 +11,15 @@
  * @subpackage photoalbums
  */
 if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.' );
-
 if( version_compare( $app_version, '3.0' ) < 0 )
 { // Older skins (versions 2.x and above) should work on newer b2evo versions, but newer skins may not work on older b2evo versions.
 	die( 'This skin is designed for b2evolution 3.0 and above. Please <a href="http://b2evolution.net/downloads/index.html">upgrade your b2evolution</a>.' );
 }
-
 global $Skin;
-
 // This is the main template; it may be used to display very different things.
 // Do inits depending on current $disp:
 skin_init( $disp );
-
 require_js( 'functions.js', 'blog' );	// for opening popup window (comments)
-
 // -------------------------- HTML HEADER INCLUDED HERE --------------------------
 skin_include( '_html_header.inc.php', array(
 		'viewport_tag'    => '#responsive#',
@@ -37,9 +32,6 @@ skin_include( '_html_header.inc.php', array(
 // Note: You can customize the default HTML header by copying the
 // _html_header.inc.php file into the current skin folder.
 // -------------------------------- END OF HEADER --------------------------------
-
-
-
 // ---------------------------- SITE HEADER INCLUDED HERE ----------------------------
 // If site headers are enabled, they will be included here:
 siteskin_include( '_site_body_header.inc.php' );
@@ -127,21 +119,20 @@ siteskin_include( '_site_body_header.inc.php' );
 	?>
 	<div class="nav_album">
 
-		<a href="<?php $Blog->disp( 'url', 'raw' ) ?>" title="<?php echo format_to_output( T_('All Albums'), 'htmlattr' ); ?>" class="all_albums">All Albums</a>
+		<a href="<?php $Blog->disp( 'url', 'raw' ) ?>" title="<?php echo format_to_output( T_('All Albums'), 'htmlattr' ); ?>" class="all_albums btn btn-primary">All Albums</a>
 
 		<span class="nav_album_title">
 	<?php
-		$single_Item->edit_link( array( // Link to backoffice for editing
-				'before'    => '',
-				'after'     => '',
-				'text'      => get_icon( 'edit' ),
-				'title'     => T_('Edit title/description...'),
-			) );
 		$single_Item->title( array(
 				'link_type' => 'permalink',
 				'before'    => '',
 				'after'     => '',
 			) );
+	?>
+				<div class="nav_album_number hidden-xs">
+					<?php printf( T_('%s photos'), $single_Item->get_number_of_images() ); ?>
+				</div>
+	<?php 	
 		if( $Skin->enabled_status_banner( $Item->status ) )
 		{ // Status banner
 			$single_Item->status( array(
@@ -150,6 +141,12 @@ siteskin_include( '_site_body_header.inc.php' );
 					'format' => 'styled'
 				) );
 		}
+		$single_Item->edit_link( array( // Link to backoffice for editing
+				'before'    => '',
+				'after'     => '',
+				'text'      => get_icon( 'edit' ),
+				'title'     => T_('Edit title/description...'),
+			) );
 	?>
 		</span><!-- ../nav_album_title -->
 	
@@ -157,7 +154,7 @@ siteskin_include( '_site_body_header.inc.php' );
 		// ------------------- PREV/NEXT POST LINKS (SINGLE POST MODE) -------------------
 		item_prevnext_links( array(
 				'template' => '$prev$$next$',
-				'block_start' => '<ul class="pager">',
+				'block_start' => '<ul class="pager hidden-xs">',
 				'next_class' => 'next',
 				'next_start'  => '<li class="next">',
 				'next_text' => 'Next',
@@ -172,10 +169,6 @@ siteskin_include( '_site_body_header.inc.php' );
 			) );
 		// ------------------------- END OF PREV/NEXT POST LINKS -------------------------
 	?>
-
-		<div class="nav_album_number">
-			<?php printf( T_('%s photos'), $single_Item->get_number_of_images() ); ?>
-		</div>
 	
 		<div class="clear"></div>
 	</div><!-- ../nav_album -->
@@ -199,23 +192,20 @@ siteskin_include( '_site_body_header.inc.php' );
 	?>
 
 	<?php
-	if( empty( $template ) && $template != 'access_requires_login.main.php' )
-	{ // Don't display page title on access restricted pages
-		// ------------------------- TITLE FOR THE CURRENT REQUEST -------------------------
-		request_title( array(
-				'title_before'=> '<h2>',
-				'title_after' => '</h2>',
-				'title_none'  => '',
-				'glue'        => ' - ',
-				'title_single_disp' => false,
-				'format'      => 'htmlbody',
-				'arcdir_text' => T_('Index'),
-				'catdir_text' => '',
-				'category_text' => T_('Gallery').': ',
-				'categories_text' => T_('Galleries').': ',
-			) );
-		// ------------------------------ END OF REQUEST TITLE -----------------------------
-	}
+	// ------------------------- TITLE FOR THE CURRENT REQUEST -------------------------
+	request_title( array(
+			'title_before'=> '<h2>',
+			'title_after' => '</h2>',
+			'title_none'  => '',
+			'glue'        => ' - ',
+			'title_single_disp' => false,
+			'format'      => 'htmlbody',
+			'arcdir_text' => T_('Index'),
+			'catdir_text' => '',
+			'category_text' => T_('Gallery').': ',
+			'categories_text' => T_('Galleries').': ',
+		) );
+	// ------------------------------ END OF REQUEST TITLE -----------------------------
 	?>
 	<div class="clear"></div>
 	<?php
@@ -236,10 +226,8 @@ siteskin_include( '_site_body_header.inc.php' );
 	<?php
 	if( $disp == 'single' || $disp == 'page' )
 	{ // ------------------------------------ START OF A POST ----------------------------------------
-
 		// Display message if no post:
 		display_if_empty();
-
 		if( isset( $single_Item ) )
 		{ // Use Item that already is defined above
 			$Item = & $single_Item;
@@ -248,7 +236,6 @@ siteskin_include( '_site_body_header.inc.php' );
 		{ // Get next Item object
 			$Item = & mainlist_get_item();
 		}
-
 		if( $Item )
 		{
 			// ---------------------- ITEM BLOCK INCLUDED HERE ------------------------
@@ -313,7 +300,6 @@ siteskin_include( '_site_body_header.inc.php' );
 					'before'      => '',
 					'after'       => ' &bull; ',
 				) );
-
 		// TODO: dh> provide a default class for pTyp, too. Should be a name and not the ityp_ID though..?!
 		?>
 
@@ -367,8 +353,6 @@ siteskin_include( '_site_body_header.inc.php' );
 // If site footers are enabled, they will be included here:
 siteskin_include( '_site_body_footer.inc.php' );
 // ------------------------------- END OF SITE FOOTER --------------------------------
-
-
 // ------------------------- HTML FOOTER INCLUDED HERE --------------------------
 skin_include( '_html_footer.inc.php' );
 // Note: You can customize the default HTML footer by copying the
