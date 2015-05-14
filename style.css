@@ -428,7 +428,7 @@ body {
 }
 .single-image {
   display: inline-block;
-  margin: 0px 42px 50px 42px;
+  margin: 0px 35px 50px 35px;
 }
 .single-image .img-responsive {
   width: 100%;
@@ -677,9 +677,9 @@ fieldset .info {
 .visible-xl {
   display: none !important;
 }
-@media (min-width: 1500px) {
+@media (min-width: 1440px) {
   .container {
-    width: 1460px;
+    width: 1410px;
   }
   .col-xl-1,
   .col-xl-2,
