@@ -35,7 +35,7 @@ siteskin_include( '_site_body_header.inc.php' );
 ?>
 
 <div class="container">
-	<div class="row">
+	<header class="row">
 		<div class="coll-xs-12 coll-sm-12 col-md-4 col-md-push-8">
 			<div class="PageTop">
 	<?php
@@ -79,9 +79,9 @@ siteskin_include( '_site_body_header.inc.php' );
 	?>
 			</div><!-- ../PageHeader -->
 		</div>
-	</div>
+	</header>
 
-	<div class="row">
+	<nav class="row">
 		<div class="col-md-12">
 			<ul class="nav nav-tabs">
 		<?php
@@ -105,7 +105,7 @@ siteskin_include( '_site_body_header.inc.php' );
 		?>
 			</ul><!-- ../nav -->
 		</div><!-- ../col-md-12 -->
-	</div><!-- ../row -->
+	</nav><!-- ../nav -->
 
 	<?php
 		if( $disp == 'single' )
@@ -173,7 +173,8 @@ siteskin_include( '_site_body_header.inc.php' );
 		}
 	} // ------------------- END OF NAVIGATION BAR FOR ALBUM(POST) ------------------- ?>
 
-	<div class="row">
+	<div class="row">	
+		<main>	
 		<div class="bPosts<?php echo in_array( $disp, array( 'catdir', 'posts', 'single', 'page', 'mediaidx' ) ) ? ' col-lg-12' : '' ?>">
 
 <!-- =================================== START OF MAIN AREA =================================== -->
@@ -186,7 +187,7 @@ siteskin_include( '_site_body_header.inc.php' );
 		) );
 	// --------------------------------- END OF MESSAGES ---------------------------------
 	?>
-
+		
 	<?php
 	// ------------------------- TITLE FOR THE CURRENT REQUEST -------------------------
 	request_title( array(
@@ -262,6 +263,7 @@ siteskin_include( '_site_body_header.inc.php' );
 		// ------------------------- END OF MAIN CONTENT TEMPLATE ---------------------------
 	?>
 		</div><!-- ../bPosts col-lg-12 -->
+		</main>
 	</div><!-- ../row -->
 
 	<?php

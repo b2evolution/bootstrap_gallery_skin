@@ -127,7 +127,7 @@ div.extended_search_form .search_options .search_option {
 table.catselect input#new_category_name {
   width: 98% !important;
 }
-label.control-label[for=post_title] {
+label.control-label[for=evo_post_title] {
   width: auto;
 }
 .item_tags td.label {
@@ -677,9 +677,9 @@ fieldset .info {
 .visible-xl {
   display: none !important;
 }
-@media (min-width: 1600px) {
+@media (min-width: 1500px) {
   .container {
-    width: 1570px;
+    width: 1460px;
   }
   .col-xl-1,
   .col-xl-2,
