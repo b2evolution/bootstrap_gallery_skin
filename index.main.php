@@ -105,7 +105,7 @@ siteskin_include( '_site_body_header.inc.php' );
 		?>
 			</ul><!-- ../nav -->
 		</div><!-- ../col-md-12 -->
-	</nav><!-- ../nav -->
+	</nav><!-- ../row -->
 
 	<?php
 		if( $disp == 'single' )
