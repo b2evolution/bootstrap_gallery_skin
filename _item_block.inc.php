@@ -10,7 +10,7 @@
  * @copyright (c)2003-2015 by Francois Planque - {@link http://fplanque.com/}
  *
  * @package evoskins
- * @subpackage photoalbums
+ * @subpackage bootstrap_gallery_skin
  */
 if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.' );
 
@@ -19,8 +19,9 @@ global $Item;
 // Default params:
 $params = array_merge( array(
 		'feature_block'          => false,
-		'item_class'             => 'bPost',
-		'item_status_class'      => 'bPost',
+		'item_class'        	 => 'evo_post',
+		'item_type_class'   	 => 'evo_post__ptyp_',
+		'item_status_class' 	 => 'evo_post__',
 		'content_mode'           => 'full', // We want regular "full" content, even in category browsing: i-e no excerpt or thumbnail
 		'image_size'             => '', // Do not display images in content block - Image is handled separately
 		'url_link_text_template' => '', // link will be displayed (except player if podcast)
@@ -28,8 +29,8 @@ $params = array_merge( array(
 	
 ?>
 
-<!--<div id="<?php // $Item->anchor_id() ?>" class="<?php //$Item->div_classes( $params ) ?>" lang="<?php //fbPostContent$Item->lang() ?>">-->
-	<div class="col-lg-12 single_post no-border">
+<!--<div id="<?php // $Item->anchor_id() ?>" class="<?php //$Item->div_classes( $params ) ?>" lang="<?php //fevo_post_content$Item->lang() ?>">-->
+	<div class="row single_post">
 
 	<?php
 		$Item->locale_temp_switch(); // Temporarily switch to post locale (useful for multilingual blogs)
@@ -51,9 +52,9 @@ $params = array_merge( array(
 		echo '</div>';
 	?>
 
-<div class="bPostContent col-xl-3 col-lg-4 col-md-6 col-sm-6">
+<div class="evo_post_content col-xl-3 col-lg-4 col-md-6 col-sm-6">
 
-	<div class="bDetails">
+	<div class="evo_details">
 
 		<?php
 			// ---------------------- POST CONTENT INCLUDED HERE ----------------------
@@ -67,7 +68,7 @@ $params = array_merge( array(
 		<?php
 			// URL link, if the post has one:
 			$Item->url_link( array(
-					'before'        => '<div class="bSmallPrint">'.T_('Link').': ',
+					'before'        => '<div class="small evo_print">'.T_('Link').': ',
 					'after'         => '</div>',
 					'text_template' => '$url$',
 					'url_template'  => '$url$',
