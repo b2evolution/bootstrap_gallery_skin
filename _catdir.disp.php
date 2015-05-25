@@ -12,20 +12,10 @@
  * @copyright (c)2003-2015 by Francois Planque - {@link http://fplanque.com/}
  *
  * @package evoskins
- * @subpackage bootstrap_gallery_skin
+ * @subpackage photoalbums
  */
 if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.' );
-
-
 global $Blog;
-
-// Default params:
-$params = array_merge( array(
-		'item_class'        => 'evo_post evo_content_block',
-		'item_type_class'   => 'evo_post__ptyp_',
-		'item_status_class' => 'evo_post__',
-	), $params );
-
 // --------------------------------- START OF POSTS -------------------------------------
 // Display message if no post:
 $params_no_content = array(
@@ -56,7 +46,7 @@ if( ! empty( $chapters ) )
 		{
 			$no_content_to_display = false;
 ?>
-<div class="posts_list">
+<div class="posts_list no-border">
 	<div class="category_title clear"><h2><a href="<?php echo $Chapter->get_permanent_url(); ?>"><?php echo $Chapter->get( 'name' ); ?></a></h2></div>
 <?php
 			while( $Item = & $ItemList->get_item() )
