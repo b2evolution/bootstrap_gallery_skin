@@ -128,22 +128,6 @@ table.catselect input#new_category_name {
 label.control-label[for=evo_post_title] {
   width: auto;
 }
-.item_tags td.label {
-  background: none;
-  color: #000;
-  text-shadow: none;
-  padding: 0;
-  font-size: 100%;
-}
-.item_tags td.input {
-  width: 90%;
-}
-.item_tags td.input label {
-  display: none;
-}
-.item_tags .controls {
-  margin-left: 0;
-}
 textarea.message_text {
   width: 95%;
 }
@@ -158,9 +142,6 @@ textarea.message_text {
 }
 .comment_form .panel .panel-body {
   padding: 0;
-}
-.form-horizontal legend {
-  padding: 0 10px;
 }
 .form-horizontal .form-group,
 .form-horizontal .custom_content {
@@ -239,15 +220,8 @@ textarea.message_text {
 .evo_form__comment .form-group .controls .form-control-static {
   text-align: left;
 }
-.evo_form__comment .form-group .control-buttons .btn {
-  margin-top: 20px;
-  margin-bottom: -15px;
-}
 .evo_post {
   margin-bottom: 2em;
-}
-.evo_post .bTitle {
-  margin: 0;
 }
 .evo_post .small.text-muted {
   margin: 4px 0 10px;
@@ -255,6 +229,15 @@ textarea.message_text {
 .evo_post .small.text-muted a,
 .evo_post .small.text-muted a .glyphicon {
   color: inherit;
+}
+.evo_post .evo_details .panel .nav_album_number {
+  display: inline;
+}
+div.evo_print a {
+  color: #777 !important;
+}
+div.evo_print a:hover {
+  color: #337ab7 !important;
 }
 div.bSideItem {
   background: #F7F5FA;
@@ -375,14 +358,20 @@ html,
 body {
   width: auto !important;
   overflow-x: hidden !important;
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 .posts_list {
   text-align: center;
   margin-top: 0px;
 }
 .posts_list .evo_post {
-  display: inline-block;
   vertical-align: middle;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  margin: 25px 44px;
 }
 .posts_list .evo_post img,
 .posts_list .posts_list .evo_post b {
@@ -416,19 +405,13 @@ body {
 .col-lg-12 h2 {
   text-align: center;
 }
-.evo_post {
-  display: inline-block;
-  vertical-align: top;
-  text-align: center;
-  margin: 25px 44px;
-}
 .evo_post_content {
   padding-top: 15px;
 }
 .single-image {
   display: inline-block;
-  margin: 42px;
   padding-bottom: 10px;
+  float: none !important;
 }
 .single-image .img-responsive {
   width: 100%;
@@ -459,15 +442,12 @@ div.evo_image_index div:hover img {
 div.evo_image_index div:hover {
   background: none;
 }
-.alert-dismissible .close {
-  right: 0px;
-}
 .post_images {
-  text-align: center;
+  margin-top: 25px;
 }
 .nav_album {
   text-align: center;
-  margin: 0px 0px 40px 0px;
+  margin: 0px 0px 5px 0px;
   padding: 10px;
   border-radius: 3px;
   border: 1px solid #ddd;
@@ -490,11 +470,13 @@ div.evo_image_index div:hover {
   text-decoration: none;
 }
 .nav_album .all_albums:before {
-  content: "<< ";
+  content: "\f100";
+  font-family: FontAwesome;
+  margin-right: 5px;
 }
 .nav_album .nav_album_title {
   display: inline-block;
-  margin-top: 6px;
+  margin-top: 8px;
 }
 .nav_album .nav_album_title a {
   font-size: 20px;
@@ -515,9 +497,9 @@ div.evo_image_index div:hover {
   font-size: 16px;
   margin-left: 5px;
 }
-.nav_album .post_status {
-  display: inline-block;
-  margin: 5px 3px -4px 3px;
+.nav_album .nav_album_title .evo_status {
+  position: relative;
+  top: -3px;
 }
 .nav_album .pager {
   float: right;
@@ -580,12 +562,15 @@ div.evo_image_index div:hover {
   -o-transition: all 0.15s ease-in-out;
   -ms-transition: all 0.15s ease-in-out;
 }
-.post_images div:hover img {
+.post_images figure:hover img {
   transform: scale(1.06);
   -ms-transform: scale(1.06);
   /* IE 9 */
   -webkit-transform: scale(1.06);
   /* Safari and Chrome */
+}
+.evo_image_legend {
+  display: table;
 }
 @media screen and (max-width: 1199px) {
   .float-right {
@@ -604,7 +589,7 @@ div.evo_image_index div:hover {
 @media screen and (max-width: 767px) {
   .nav_album_title {
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 12px;
     margin-right: 5px;
     float: right !important;
     position: relative !important;
@@ -615,12 +600,9 @@ div.evo_image_index div:hover {
     padding-left: 0px;
     padding-right: 0px;
   }
-  .single-image {
-    margin-left: 42px;
-    margin-right: 42px;
-  }
-  .evo_details {
-    padding: 0px 15px;
+  .post_images {
+    display: inline-block;
+    text-align: center;
   }
 }
 @media screen and (max-width: 500px) {
@@ -637,16 +619,19 @@ div.evo_image_index div:hover {
     height: auto !important;
   }
   .single-image {
-    margin: 0px 0px 40px 0px;
+    margin: 0px 0px 25px 0px;
   }
   .nav_album .nav_album_title {
-    margin-top: 12px;
+    margin-top: 6px;
   }
   .nav_album .nav_album_title a {
     font-size: 16px;
     margin-right: 0px;
     margin-top: 0px;
     margin-bottom: 0px;
+  }
+  .nav_album .nav_album_title .evo_status {
+    top: -1px;
   }
 }
 .bt-content {
@@ -669,7 +654,7 @@ div.evo_image_index div:hover {
   background-color: #ffffff;
   border-radius: 4px;
 }
-/* XL Bootstrap Grid Layot */
+/* XL Bootstrap Grid Layout */
 .visible-xl-block,
 .visible-xl-inline,
 .visible-xl-inline-block,
@@ -679,9 +664,6 @@ div.evo_image_index div:hover {
 @media (min-width: 1440px) {
   .container {
     width: 1410px;
-  }
-  .single-image:first-child {
-    margin: 42px 42px 42px 0px;
   }
   .col-xl-1,
   .col-xl-2,

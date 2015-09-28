@@ -28,7 +28,7 @@ class bootstrap_gallery_Skin extends Skin
 	 */
 	function get_default_name()
 	{
-		return 'Bootstrap Gallery';
+		return 'Bootstrap Gallery Skin';
 	}
 
 
@@ -65,125 +65,179 @@ class bootstrap_gallery_Skin extends Skin
 		load_funcs( 'files/model/_image.funcs.php' );
 
 		$r = array_merge( array(
-				'page_text_size' => array(
-					'label' => T_('Page text size'),
-					'note' => T_('Default value is 14 pixels.'),
-					'defaultvalue' => '14px',
-					'type' => 'text',
+
+				'section_image_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('Image Viewing')
 				),
-				'page_text_color' => array(
-					'label' => T_('Page text color'),
-					'note' => T_('E-g: #00ff00 for green'),
-					'defaultvalue' => '#333',
-					'type' => 'color',
+					'posts_thumb_size' => array(
+						'label' => T_('Thumbnail size for Albums'),
+						'note' => '',
+						'defaultvalue' => 'crop-192x192',
+						'options' => get_available_thumb_sizes(),
+						'type' => 'select',
+					),
+					'single_thumb_size' => array(
+						'label' => T_('Thumbnail size inside Album'),
+						'note' => '',
+						'defaultvalue' => 'fit-640x480',
+						'options' => get_available_thumb_sizes(),
+						'type' => 'select',
+					),
+					'mediaidx_thumb_size' => array(
+						'label' => T_('Thumbnail size in Media index'),
+						'note' => '',
+						'defaultvalue' => 'fit-256x256',
+						'options' => get_available_thumb_sizes(),
+						'type' => 'select',
+					),
+					'banner_public' => array(
+						'label' => T_('Display "Public" banner'),
+						'note' => T_('Display banner for "Public" albums (albums & comments)'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),
+				'section_image_end' => array(
+					'layout' => 'end_fieldset',
 				),
-				'page_link_color' => array(
-					'label' => T_('Page link color'),
-					'note' => T_('E-g: #00ff00 for green'),
-					'defaultvalue' => '#337ab7',
-					'type' => 'color',
+
+
+				'section_page_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('Page Styles')
 				),
-				'current_tab_text_color' => array(
-					'label' => T_('Current tab text color'),
-					'note' => T_('E-g: #ff6600 for orange'),
-					'defaultvalue' => '#333',
-					'type' => 'color',
+					'page_text_size' => array(
+						'label' => T_('Page text size'),
+						'note' => T_('Default value is 14 pixels.'),
+						'defaultvalue' => '14px',
+						'size' => '4px',
+						'type' => 'text',
+					),
+					'page_text_color' => array(
+						'label' => T_('Page text color'),
+						'note' => T_('E-g: #00ff00 for green'),
+						'defaultvalue' => '#333',
+						'type' => 'color',
+					),
+					'page_link_color' => array(
+						'label' => T_('Page link color'),
+						'note' => T_('E-g: #00ff00 for green'),
+						'defaultvalue' => '#337ab7',
+						'type' => 'color',
+					),
+					'current_tab_text_color' => array(
+						'label' => T_('Current tab text color'),
+						'note' => T_('E-g: #ff6600 for orange'),
+						'defaultvalue' => '#333',
+						'type' => 'color',
+					),
+					'page_bg_color' => array(
+						'label' => T_('Page background color'),
+						'note' => T_('E-g: #ff0000 for red'),
+						'defaultvalue' => '#fff',
+						'type' => 'color',
+					),
+				'section_page_end' => array(
+					'layout' => 'end_fieldset',
 				),
-				'page_bg_color' => array(
-					'label' => T_('Page background color'),
-					'note' => T_('E-g: #ff0000 for red'),
-					'defaultvalue' => '#fff',
-					'type' => 'color',
+
+
+				'section_colorbox_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('Colorbox Image Zoom')
 				),
-				// Colorbox
-				'colorbox' => array(
-					'label' => T_('Colorbox Image Zoom'),
-					'note' => T_('Check to enable javascript zooming on images (using the colorbox script)'),
-					'defaultvalue' => 1,
-					'type' => 'checkbox',
+					'colorbox' => array(
+						'label' => T_('Colorbox Image Zoom'),
+						'note' => T_('Check to enable javascript zooming on images (using the colorbox script)'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),
+					'colorbox_vote_post' => array(
+						'label' => T_('Voting on Post Images'),
+						'note' => T_('Check this to enable AJAX voting buttons in the colorbox zoom view'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),
+					'colorbox_vote_post_numbers' => array(
+						'label' => T_('Display Votes'),
+						'note' => T_('Check to display number of likes and dislikes'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),
+					'colorbox_vote_comment' => array(
+						'label' => T_('Voting on Comment Images'),
+						'note' => T_('Check this to enable AJAX voting buttons in the colorbox zoom view'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),
+					'colorbox_vote_comment_numbers' => array(
+						'label' => T_('Display Votes'),
+						'note' => T_('Check to display number of likes and dislikes'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),
+					'colorbox_vote_user' => array(
+						'label' => T_('Voting on User Images'),
+						'note' => T_('Check this to enable AJAX voting buttons in the colorbox zoom view'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),
+					'colorbox_vote_user_numbers' => array(
+						'label' => T_('Display Votes'),
+						'note' => T_('Check to display number of likes and dislikes'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),
+				'section_colorbox_end' => array(
+					'layout' => 'end_fieldset',
 				),
-				'colorbox_vote_post' => array(
-					'label' => T_('Voting on Post Images'),
-					'note' => T_('Check this to enable AJAX voting buttons in the colorbox zoom view'),
-					'defaultvalue' => 1,
-					'type' => 'checkbox',
+
+
+				'section_username_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('Username options')
 				),
-				'colorbox_vote_post_numbers' => array(
-					'label' => T_('Display Votes'),
-					'note' => T_('Check to display number of likes and dislikes'),
-					'defaultvalue' => 1,
-					'type' => 'checkbox',
+					'gender_colored' => array(
+						'label' => T_('Display gender'),
+						'note' => T_('Use colored usernames to differentiate men & women.'),
+						'defaultvalue' => 0,
+						'type' => 'checkbox',
+					),
+					'bubbletip' => array(
+						'label' => T_('Username bubble tips'),
+						'note' => T_('Check to enable bubble tips on usernames'),
+						'defaultvalue' => 0,
+						'type' => 'checkbox',
+					),
+					'autocomplete_usernames' => array(
+						'label' => T_('Autocomplete usernames'),
+						'note' => T_('Check to enable auto-completion of usernames entered after a "@" sign in the comment forms'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),
+				'section_username_end' => array(
+					'layout' => 'end_fieldset',
 				),
-				'colorbox_vote_comment' => array(
-					'label' => T_('Voting on Comment Images'),
-					'note' => T_('Check this to enable AJAX voting buttons in the colorbox zoom view'),
-					'defaultvalue' => 1,
-					'type' => 'checkbox',
+
+
+				'section_access_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('When access is denied or requires login...')
 				),
-				'colorbox_vote_comment_numbers' => array(
-					'label' => T_('Display Votes'),
-					'note' => T_('Check to display number of likes and dislikes'),
-					'defaultvalue' => 1,
-					'type' => 'checkbox',
+					'access_login_containers' => array(
+						'label' => T_('Display on login screen'),
+						'note' => '',
+						'type' => 'checklist',
+						'options' => array(
+							array( 'header',   sprintf( T_('"%s" container'), NT_('Header') ),    1 ),
+							array( 'page_top', sprintf( T_('"%s" container'), NT_('Page Top') ),  1 ),
+							array( 'menu',     sprintf( T_('"%s" container'), NT_('Menu') ),      0 ),
+							array( 'footer',   sprintf( T_('"%s" container'), NT_('Footer') ),    1 ) ),
+						),
+				'section_access_end' => array(
+					'layout' => 'end_fieldset',
 				),
-				'colorbox_vote_user' => array(
-					'label' => T_('Voting on User Images'),
-					'note' => T_('Check this to enable AJAX voting buttons in the colorbox zoom view'),
-					'defaultvalue' => 1,
-					'type' => 'checkbox',
-				),
-				'colorbox_vote_user_numbers' => array(
-					'label' => T_('Display Votes'),
-					'note' => T_('Check to display number of likes and dislikes'),
-					'defaultvalue' => 1,
-					'type' => 'checkbox',
-				),
-				// Other settings
-				'gender_colored' => array(
-					'label' => T_('Display gender'),
-					'note' => T_('Use colored usernames to differentiate men & women.'),
-					'defaultvalue' => 0,
-					'type' => 'checkbox',
-				),
-				'bubbletip' => array(
-					'label' => T_('Username bubble tips'),
-					'note' => T_('Check to enable bubble tips on usernames'),
-					'defaultvalue' => 0,
-					'type' => 'checkbox',
-				),
-				'autocomplete_usernames' => array(
-					'label' => T_('Autocomplete usernames'),
-					'note' => T_('Check to enable auto-completion of usernames entered after a "@" sign in the comment forms'),
-					'defaultvalue' => 1,
-					'type' => 'checkbox',
-				),
-				'banner_public' => array(
-					'label' => T_('"Public" banner'),
-					'note' => T_('Display banner for "Public" posts (posts & comments)'),
-					'defaultvalue' => 1,
-					'type' => 'checkbox',
-				),
-				'mediaidx_thumb_size' => array(
-					'label' => T_('Thumbnail size for media index'),
-					'note' => '',
-					'defaultvalue' => 'fit-256x256',
-					'options' => get_available_thumb_sizes(),
-					'type' => 'select',
-				),
-				'posts_thumb_size' => array(
-					'label' => T_('Thumbnail size in post list'),
-					'note' => '',
-					'defaultvalue' => 'crop-192x192',
-					'options' => get_available_thumb_sizes(),
-					'type' => 'select',
-				),
-				'single_thumb_size' => array(
-					'label' => T_('Thumbnail size in single page'),
-					'note' => '',
-					'defaultvalue' => 'fit-256x256',
-					'options' => get_available_thumb_sizes(),
-					'type' => 'select',
-				),
+
 			), parent::get_param_definitions( $params ) );
 
 		return $r;
@@ -201,20 +255,24 @@ class bootstrap_gallery_Skin extends Skin
 
 		// Request some common features that the parent function (Skin::display_init()) knows how to provide:
 		parent::display_init( array(
-				'jquery', 							// Load jQuery
-				'font_awesome', 					// Load Font Awesome (and use its icons as a priority over the Bootstrap glyphicons)
-				'bootstrap', 						// Load Bootstrap (without 'bootstrap_theme_css')
-				'bootstrap_evo_css', 			// Load the b2evo_base styles for Bootstrap (instead of the old b2evo_base styles)
-				'bootstrap_messages',			// Initialize $Messages Class to use Bootstrap styles
-				'style_css', 						// Load the style.css file of the current skin
-				'colorbox',							// Load Colorbox (a lightweight Lightbox alternative + customizations for b2evo)
-				'bootstrap_init_tooltips', 	// Inline JS to init Bootstrap tooltips (E.g. on comment form for allowed file extensions)
+				'jquery',                  // Load jQuery
+				'font_awesome',            // Load Font Awesome (and use its icons as a priority over the Bootstrap glyphicons)
+				'bootstrap',               // Load Bootstrap (without 'bootstrap_theme_css')
+				'bootstrap_evo_css',       // Load the b2evo_base styles for Bootstrap (instead of the old b2evo_base styles)
+				'bootstrap_messages',      // Initialize $Messages Class to use Bootstrap styles
+				'style_css',               // Load the style.css file of the current skin
+				'colorbox',                // Load Colorbox (a lightweight Lightbox alternative + customizations for b2evo)
+				'bootstrap_init_tooltips', // Inline JS to init Bootstrap tooltips (E.g. on comment form for allowed file extensions)
+				'disp_auto',               // Automatically include additional CSS and/or JS required by certain disps (replace with 'disp_off' to disable this)
 			) );
 
 		// Skin specific initializations:
 
 		// Add custom CSS:
 		$custom_css = '';
+
+// fp> TODO: the following code WORKS but produces UGLY CSS with tons of repetitions. It needs a full rewrite.
+
 		// ===== Custom page styles: =====
 		$custom_styles = array();			
 		
@@ -286,7 +344,7 @@ class bootstrap_gallery_Skin extends Skin
 		if( isset( $thumbnail_sizes[ $single_thumb_size ] ) )
 		{
 			// Make the width of image block as fixed to don't expand it by long post title text
-			$custom_css .= '	.post_images .image_block .image_legend { width:'.$thumbnail_sizes[ $single_thumb_size ][1].'px; max-width:'.$thumbnail_sizes[ $single_thumb_size ][1]."px }\n";
+			$custom_css .= '.post_images .single-image .evo_image_legend { width: 100%; }\n';
 			// Set width & height for block with text "No pictures yet"
 			/*$custom_css .= '	.posts_list .evo_post b { width:'.( $thumbnail_sizes[ $single_thumb_size ][1] - 20 ).'px;'
 				.'height:'.( $thumbnail_sizes[ $single_thumb_size ][2] - 20 ).'px'." }\n";*/
@@ -658,6 +716,21 @@ class bootstrap_gallery_Skin extends Skin
 				// Delegate to parent class:
 				return parent::get_template( $name );
 		}
+	}
+
+
+	/**
+	 * Check if we can display a widget container
+	 *
+	 * @param string Widget container key: 'header', 'page_top', 'menu', 'sidebar', 'sidebar2', 'footer'
+	 * @param string Skin setting name
+	 * @return boolean TRUE to display
+	 */
+	function is_visible_container( $container_key, $setting_name = 'access_login_containers' )
+	{
+		$access = $this->get_setting( $setting_name );
+
+		return ( ! empty( $access ) && ! empty( $access[ $container_key ] ) );
 	}
 
 }

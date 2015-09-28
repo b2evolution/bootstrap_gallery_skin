@@ -160,24 +160,6 @@ table.catselect {
 label.control-label[for=evo_post_title] {
 	width: auto;
 }
-.item_tags {
-	td.label {
-		background: none;
-		color: #000;
-		text-shadow: none;
-		padding: 0;
-		font-size: 100%;
-	}
-	td.input {
-		width: 90%;
-		label {
-			display: none;
-		}
-	}
-	.controls {
-		margin-left: 0;
-	}
-}
 
 // A form to create a new message/thread
 textarea.message_text {
@@ -200,9 +182,6 @@ textarea.message_text {
 	}
 }
 .form-horizontal {
-	legend {
-		padding: 0 10px;
-	}
 	.form-group, .custom_content {
 		margin-left: 0;
 		margin-right: 0;
@@ -288,25 +267,30 @@ textarea.message_text {
 				text-align: left;
 			}
 		}
-		.control-buttons {
-			.btn {
-				margin-top: 20px;
-				margin-bottom: -15px;
-			}
-		}
 	}
 }
 
 .evo_post {
 	margin-bottom: 2em;
-	.bTitle {
-		margin: 0;
-	}
 	.small.text-muted {
 		margin: 4px 0 10px;
 		a, a .glyphicon {
 			color: inherit;
 		}
+	}
+	.evo_details {
+		.panel {
+			.nav_album_number {
+				display: inline;
+			}
+		}
+	}
+}
+// On disp=single, colors links in post to grey
+div.evo_print a {
+	color: #777 !important;
+	&:hover {
+		color: #337ab7 !important;
 	}
 }
 
@@ -435,12 +419,21 @@ div.action_messages, div.log_container {
 html, body {
 	width: auto !important;
 	overflow-x: hidden !important;
+	margin:0;
+	padding:0;
+	height:100%;
 }
+
 .posts_list {
 text-align: center;
 	.evo_post {
-	display: inline-block;
-  vertical-align: middle;
+		display: inline-block;
+		vertical-align: middle;
+
+		display: inline-block;
+		vertical-align: top;
+		text-align: center;
+		margin: 25px 44px;
 	}
 	.evo_post img, .posts_list .evo_post b {
 		transition: all 0.15s ease-in-out;
@@ -472,18 +465,14 @@ text-align: center;
 	text-align: center;
 }
 .evo_post {
-	display: inline-block;
-	vertical-align: top;
-	text-align: center;
-	margin: 25px 44px;
 }
 .evo_post_content {
 	padding-top: 15px;	
 }
 .single-image {
 	display: inline-block;
-	margin: 42px;
 	padding-bottom: 10px;
+	float: none !important;
 	.img-responsive {
 		width: 100%;
 		text-align: center;
@@ -512,15 +501,12 @@ div.evo_image_index div {
 		background: none;
 	}
 }
-.alert-dismissible .close {
-	right: 0px;
-}
 .post_images {
-	text-align: center;
+	margin-top: 25px;
 }
 .nav_album {
 	text-align: center;
-	margin: 0px 0px 40px 0px;
+	margin: 0px 0px 5px 0px;
 	padding: 10px;
 	border-radius: 3px;
 	border: 1px solid #ddd;
@@ -540,12 +526,14 @@ div.evo_image_index div {
 			text-decoration: none;
 		}
 		&:before {
-			content:"<< ";
+			content:"\f100";
+			font-family: FontAwesome;
+			margin-right: 5px;
 		}
 	}	
 	.nav_album_title {
 		display: inline-block;
-		margin-top: 6px;
+		margin-top: 8px;
 		a {
 			font-size: 20px;
 		}
@@ -566,9 +554,9 @@ div.evo_image_index div {
 		font-size: 16px;
 		margin-left: 5px;
 	}
-	.post_status {
-		display: inline-block;
-		margin: 5px 3px -4px 3px;
+	.nav_album_title .evo_status {
+		position: relative;
+		top: -3px;
 	}
 	.pager {
 		float: right;
@@ -635,13 +623,18 @@ div.evo_image_index div {
 	-o-transition: all 0.15s ease-in-out;
 	-ms-transition: all 0.15s ease-in-out;
 }
-.post_images div:hover img {
+.post_images figure:hover img {
 	transform:scale(1.06);
 	-ms-transform:scale(1.06); /* IE 9 */
 	-webkit-transform:scale(1.06); /* Safari and Chrome */
 }
+.evo_image_legend {
+	display: table;
+}
 
 // Responsive styles
+@media (min-width: 992px) and (max-width: 1199px) {
+}
 @media screen and (max-width: 1199px) {
 	.float-right {
 		float: none !important;
@@ -659,7 +652,7 @@ div.evo_image_index div {
 @media screen and (max-width: 767px) {
 	.nav_album_title {
 		display: inline-block;
-		margin-top: 10px;
+		margin-top: 12px;
 		margin-right: 5px;
 		float: right !important;
 		position: relative !important;
@@ -668,13 +661,10 @@ div.evo_image_index div {
 	.evo_details, .col-lg-12 {
 		padding-left: 0px;
 		padding-right: 0px;
-	}	
-	.single-image {
-		margin-left: 42px;
-		margin-right: 42px;
 	}
-	.evo_details {
-	padding: 0px 15px;
+	.post_images {
+		display: inline-block;
+		text-align: center;
 	}
 }
 @media screen and (max-width: 500px) {
@@ -691,17 +681,20 @@ div.evo_image_index div {
 		}
 	}
 	.single-image {
-		margin: 0px 0px 40px 0px;
+		margin: 0px 0px 25px 0px;
 	}
 	.nav_album {
 		.nav_album_title {
-			margin-top: 12px;
+			margin-top: 6px;
 			a {
 				font-size: 16px;
 				margin-right: 0px;
 				margin-top: 0px;
 				margin-bottom: 0px;
 			}
+		}	
+		.nav_album_title .evo_status {
+			top: -1px;
 		}
 	}
 }
@@ -734,7 +727,7 @@ div.evo_image_index div {
 	}
 }
 
-/* XL Bootstrap Grid Layot */
+/* XL Bootstrap Grid Layout */
 .visible-xl-block,
 .visible-xl-inline,
 .visible-xl-inline-block,
@@ -745,9 +738,6 @@ div.evo_image_index div {
     .container {
         width: 1410px;
     }
-	.single-image:first-child {
-		margin: 42px 42px 42px 0px;
-	}
 
     .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12 {
         float: left;
@@ -982,6 +972,7 @@ div.evo_image_index div {
     }
 
     .visible-xl-inline-block {
+        display: inline-block !important;
         display: inline-block !important;
     }
 
