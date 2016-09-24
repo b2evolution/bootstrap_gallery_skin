@@ -1,9 +1,16 @@
 <?php
 /**
- * This file is the template that displays "login required" for non logged-in users.
+ * This is the template that displays the message user form
  *
- * For a quick explanation of b2evo 2.0 skins, please start here:
- * {@link http://b2evolution.net/man/skin-development-primer}
+ * This file is not meant to be called directly.
+ * It is meant to be called by an include in the main.page.php template.
+ * To display a feedback, you should call a stub AND pass the right parameters
+ * For example: /blogs/index.php?disp=msgform&recipient_id=n
+ * Note: don't code this URL by hand, use the template functions to generate it!
+ *
+ * b2evolution - {@link http://b2evolution.net/}
+ * Released under GNU GPL License - {@link http://b2evolution.net/about/gnu-gpl-license}
+ * @copyright (c)2003-2016 by Francois Planque - {@link http://fplanque.com/}
  *
  * @package evoskins
  * @subpackage bootstrap_gallery_skin
@@ -24,7 +31,7 @@ skin_init( $disp );
 
 
 // -------------------------- HTML HEADER INCLUDED HERE --------------------------
-skin_include( '_html_header.inc.php', array() );
+skin_include( '_html_header.inc.php' );
 // -------------------------------- END OF HEADER --------------------------------
 
 
@@ -132,32 +139,33 @@ if( $Skin->is_visible_container( 'menu' ) )
 		<!-- ================================= START OF MAIN AREA ================================== -->
 
 		<?php
-			// -------------- MAIN CONTENT TEMPLATE INCLUDED HERE (Based on $disp) --------------
-			skin_include( '$disp$', array(
-					// Form params for the forms below: login, register, lostpassword, activateinfo and msgform
-					'skin_form_before'      => '<div class="panel panel-default skin-form">'
-																				.'<div class="panel-heading">'
-																					.'<h3 class="panel-title">$form_title$</h3>'
-																				.'</div>'
-																				.'<div class="panel-body">',
-					'skin_form_after'       => '</div></div>',
-					// Login
-					'display_form_messages' => true,
-					'form_title_login'      => T_('Log in to your account').'$form_links$',
-					'form_title_lostpass'   => get_request_title().'$form_links$',
-					'lostpass_page_class'   => 'evo_panel__lostpass',
-					'login_form_inskin'     => false,
-					'login_page_class'      => 'evo_panel__login',
-					'login_page_before'     => '<div class="$form_class$">',
-					'login_page_after'      => '</div>',
-					'display_reg_link'      => true,
-					'abort_link_position'   => 'form_title',
-					'abort_link_text'       => '<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>',
+			// ------------------------- MESSAGES GENERATED FROM ACTIONS -------------------------
+			messages( array(
+					'block_start' => '<div class="action_messages">',
+					'block_end'   => '</div>',
 				) );
+			// --------------------------------- END OF MESSAGES ---------------------------------
+		?>
+
+		<?php
+			// ------------------------ TITLE FOR THE CURRENT REQUEST ------------------------
+			request_title( array(
+					'title_before'      => '<h2 class="page_title">',
+					'title_after'       => '</h2>',
+					'title_none'        => '',
+					'glue'              => ' - ',
+				) );
+			// ----------------------------- END OF REQUEST TITLE ----------------------------
+		?>
+
+		<?php
+			// -------------- MAIN CONTENT TEMPLATE INCLUDED HERE (Based on $disp) --------------
+			skin_include( '$disp$' );
 			// Note: you can customize any of the sub templates included here by
 			// copying the matching php file into your skin directory.
 			// ------------------------- END OF MAIN CONTENT TEMPLATE ---------------------------
 		?>
+
 		</main>
 
 	</div><!-- .col -->

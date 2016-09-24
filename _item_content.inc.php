@@ -8,7 +8,7 @@
  *
  * b2evolution - {@link http://b2evolution.net/}
  * Released under GNU GPL License - {@link http://b2evolution.net/about/gnu-gpl-license}
- * @copyright (c)2003-2015 by Francois Planque - {@link http://fplanque.com/}
+ * @copyright (c)2003-2016 by Francois Planque - {@link http://fplanque.com/}
  *
  * @package evoskins
  */
@@ -60,14 +60,20 @@ $params = array_merge( array(
 		'image_size'               => 'fit-1280x720',
 		'image_limit'              =>  1000,
 		'image_link_to'            => 'original', // Can be 'original', 'single' or empty
-		'excerpt_image_class'      => 'img-responsive',
-		'excerpt_image_size'       => 'fit-1280x720',
-		'excerpt_image_limit'      => 1,
+		'excerpt_image_class'      => '',
+		'excerpt_image_size'       => 'fit-80x80',
+		'excerpt_image_limit'      => 0,
 		'excerpt_image_link_to'    => 'single',
 		'include_cover_images'     => false, // Set to true if you want cover images to appear with teaser images.
 
 		'before_gallery'           => '<div class="evo_post_gallery">',
 		'after_gallery'            => '</div>',
+		'gallery_table_start'      => '',
+		'gallery_table_end'        => '',
+		'gallery_row_start'        => '',
+		'gallery_row_end'          => '',
+		'gallery_cell_start'       => '<div class="evo_post_gallery__image">',
+		'gallery_cell_end'         => '</div>',
 		'gallery_image_size'       => 'crop-80x80',
 		'gallery_image_limit'      => 1000,
 		'gallery_colls'            => 5,
@@ -165,7 +171,7 @@ switch( $content_mode )
 		// Compact display:
 		echo $params['content_start_excerpt'];
 
-		if( !empty($params['excerpt_image_size']) )
+		if( !empty($params['excerpt_image_size']) && !empty($params['excerpt_image_limit']) )
 		{
 			// Display images that are linked to this post:
 			$Item->images( array(
@@ -181,6 +187,12 @@ switch( $content_mode )
 					'image_link_to'       => $params['excerpt_image_link_to'],
 					'before_gallery'      => $params['before_gallery'],
 					'after_gallery'       => $params['after_gallery'],
+					'gallery_table_start' => $params['gallery_table_start'],
+					'gallery_table_end'   => $params['gallery_table_end'],
+					'gallery_row_start'   => $params['gallery_row_start'],
+					'gallery_row_end'     => $params['gallery_row_end'],
+					'gallery_cell_start'  => $params['gallery_cell_start'],
+					'gallery_cell_end'    => $params['gallery_cell_end'],
 					'gallery_image_size'  => $params['gallery_image_size'],
 					'gallery_image_limit' => $params['gallery_image_limit'],
 					'gallery_colls'       => $params['gallery_colls'],
@@ -239,6 +251,12 @@ switch( $content_mode )
 					'image_link_to'       => $params['image_link_to'],
 					'before_gallery'      => $params['before_gallery'],
 					'after_gallery'       => $params['after_gallery'],
+					'gallery_table_start' => $params['gallery_table_start'],
+					'gallery_table_end'   => $params['gallery_table_end'],
+					'gallery_row_start'   => $params['gallery_row_start'],
+					'gallery_row_end'     => $params['gallery_row_end'],
+					'gallery_cell_start'  => $params['gallery_cell_start'],
+					'gallery_cell_end'    => $params['gallery_cell_end'],
 					'gallery_image_size'  => $params['gallery_image_size'],
 					'gallery_image_limit' => $params['gallery_image_limit'],
 					'gallery_colls'       => $params['gallery_colls'],
@@ -287,9 +305,8 @@ switch( $content_mode )
 					'link_to'     => $params['more_link_to'],
 				) );
 
-			// Display images that are linked "after more" to this post:
-			if( ! empty($params['image_size']) && $more && $Item->has_content_parts($params) /* only if not displayed all images already */ )
-			{	
+			if( ! empty( $params['image_size'] ) && ( $more || $params['force_more'] ) && $Item->has_content_parts( $params ) /* only if not displayed all images already */ )
+			{	// Display images that are linked "after more" to this post:
 				$Item->images( array(
 						'before'              => $params['before_images'],
 						'before_image'        => $params['before_image'],
@@ -303,6 +320,12 @@ switch( $content_mode )
 						'image_link_to'       => $params['image_link_to'],
 						'before_gallery'      => $params['before_gallery'],
 						'after_gallery'       => $params['after_gallery'],
+						'gallery_table_start' => $params['gallery_table_start'],
+						'gallery_table_end'   => $params['gallery_table_end'],
+						'gallery_row_start'   => $params['gallery_row_start'],
+						'gallery_row_end'     => $params['gallery_row_end'],
+						'gallery_cell_start'  => $params['gallery_cell_start'],
+						'gallery_cell_end'    => $params['gallery_cell_end'],
 						'gallery_image_size'  => $params['gallery_image_size'],
 						'gallery_image_limit' => $params['gallery_image_limit'],
 						'gallery_colls'       => $params['gallery_colls'],
